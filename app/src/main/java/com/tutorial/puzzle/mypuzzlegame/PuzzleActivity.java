@@ -106,10 +106,10 @@ public class PuzzleActivity extends AppCompatActivity {
     private boolean isGameCompleted() {
         for (PuzzlePiece piece : pieces) {
             if (!piece.isCompleted()) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void initializeChronometer() {
@@ -117,7 +117,7 @@ public class PuzzleActivity extends AppCompatActivity {
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                if (isGameCompleted()) {
+                if (!isGameCompleted()) {
                     return;
                 }
                 chronometer.stop();
